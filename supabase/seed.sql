@@ -1,0 +1,4 @@
+-- Starter products for Rockhard Handware
+insert into public.products (slug, name, tagline, price, category, status) values
+  ('heavy-duty-glove', 'HEAVY DUTY', 'Built for the toughest jobs.', 48, 'Heavy Duty', 'active'),  ('cut-resistant-glove', 'CUT RESISTANT', 'Protection when it matters.', 52, 'Cut Resistant', 'active'),  ('cold-weather-glove', 'COLD WEATHER', 'Stay warm. Keep working.', 58, 'Cold Weather', 'active'),  ('mechanic-glove', 'MECHANIC', 'Precision and performance.', 42, 'Mechanic', 'active'),  ('framer-glove', 'FRAMER PRO', 'Built for the job site.', 46, 'Heavy Duty', 'active'),  ('welder-glove', 'WELDER GAUNTLET', 'Heat-rated. Sparks-ready.', 68, 'Heavy Duty', 'active'),  ('winter-lined-glove', 'ARCTIC LINED', 'Sub-zero rated.', 64, 'Cold Weather', 'active'),  ('impact-glove', 'IMPACT PRO', 'Knuckle armor. Full grip.', 54, 'Mechanic', 'active')
+on conflict (slug) do nothing;
