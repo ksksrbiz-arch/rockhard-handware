@@ -12,7 +12,7 @@ export function StorySection() {
 
       <div className="mx-auto max-w-7xl px-5 grid md:grid-cols-2 gap-10 md:gap-14 items-center relative z-10">
         <div className="aspect-[4/3] md:aspect-auto md:h-[480px] relative overflow-hidden border border-border">
-          <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1600&q=80" alt="" className="absolute inset-0 w-full h-full object-cover" />
+          <img src="/img/lifestyle-welder.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-transparent to-bg/40" />
         </div>
         <div>

@@ -9,7 +9,7 @@ export function Categories() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6">
         <div className="group">
           <div className="aspect-square bg-white relative overflow-hidden border border-light-ink/10 mb-4">
-            <img src="https://images.unsplash.com/photo-1591375607291-4d0a32c6c9b9?auto=format&fit=crop&w=800&q=80" alt="HEAVY DUTY" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/img/lifestyle-framer.jpg" alt="HEAVY DUTY" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <p className="font-display tracking-wider-3 uppercase text-light-ink text-base md:text-lg text-center mb-1">HEAVY DUTY</p>
           <p className="text-light-ink/70 text-xs text-center mb-4">Built for the toughest jobs.</p>
@@ -19,7 +19,7 @@ export function Categories() {
         </div>
         <div className="group">
           <div className="aspect-square bg-white relative overflow-hidden border border-light-ink/10 mb-4">
-            <img src="https://images.unsplash.com/photo-1592878840630-dd96b893be95?auto=format&fit=crop&w=800&q=80" alt="CUT RESISTANT" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/img/glove-tactical-black.jpg" alt="CUT RESISTANT" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <p className="font-display tracking-wider-3 uppercase text-light-ink text-base md:text-lg text-center mb-1">CUT RESISTANT</p>
           <p className="text-light-ink/70 text-xs text-center mb-4">Protection when it matters.</p>
@@ -39,7 +39,7 @@ export function Categories() {
         </div>
         <div className="group">
           <div className="aspect-square bg-white relative overflow-hidden border border-light-ink/10 mb-4">
-            <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=80" alt="MECHANIC" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/img/lifestyle-mechanic.jpg" alt="MECHANIC" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <p className="font-display tracking-wider-3 uppercase text-light-ink text-base md:text-lg text-center mb-1">MECHANIC</p>
           <p className="text-light-ink/70 text-xs text-center mb-4">Precision and performance.</p>
