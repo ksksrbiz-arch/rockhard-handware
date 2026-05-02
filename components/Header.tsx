@@ -1,8 +1,9 @@
 'use client';
 import Link from 'next/link';
-import { ShoppingCart, Search, Package, Menu, X } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { useCart } from '@/lib/cart-store';
+import { Logo } from './Logo';
 
 export function Header() {
   const { items } = useCart();
@@ -10,52 +11,48 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-bg/95 backdrop-blur border-b border-border">
-      <div className="mx-auto max-w-7xl px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="font-display text-2xl tracking-wider-2 uppercase">
-          <span className="text-ink">ROCKHARD</span><span className="text-accent ml-1">HANDWARE</span>
-        </Link>
+    <header className="absolute top-10 left-0 right-0 z-30">
+      <div className="mx-auto max-w-7xl px-5 flex items-center justify-between">
+        <Logo size="md" />
 
-        <nav className="hidden md:flex items-center gap-7 text-sm font-display tracking-wider-2 uppercase">
-          <Link href="/" className="hover:text-accent transition-colors">Home</Link>
-          <Link href="/shop" className="hover:text-accent transition-colors">Shop</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Work Gloves")}`} className="hover:text-accent transition-colors">WORK GLOVES</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Tactical")}`} className="hover:text-accent transition-colors">TACTICAL</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Accessories")}`} className="hover:text-accent transition-colors">ACCESSORIES</Link>
-          <Link href="/about" className="hover:text-accent transition-colors">About</Link>
-          <Link href="/contact" className="hover:text-accent transition-colors">Contact</Link>
+        <nav className="hidden md:flex items-center gap-8 text-xs font-display tracking-wider-3 uppercase">
+          <details className="relative">
+            <summary className="list-none cursor-pointer hover:text-accent">Shop ▾</summary>
+            <div className="absolute left-0 top-full mt-2 bg-bg-alt border border-border min-w-[180px] py-2">
+              <Link href="/shop" className="block px-4 py-2 text-xs hover:bg-card hover:text-accent">All Gloves</Link>
+              <Link href="/shop?category=Tactical" className="block px-4 py-2 text-xs hover:bg-card hover:text-accent">Tactical</Link>
+              <Link href="/shop?category=Work%20Gloves" className="block px-4 py-2 text-xs hover:bg-card hover:text-accent">Work Gloves</Link>
+              <Link href="/shop?category=Accessories" className="block px-4 py-2 text-xs hover:bg-card hover:text-accent">Accessories</Link>
+            </div>
+          </details>
+          <Link href="/shop" className="hover:text-accent">Collections ▾</Link>
+          <Link href="/about" className="hover:text-accent">About Us</Link>
+          <Link href="/about" className="hover:text-accent">Built for Glory</Link>
         </nav>
 
-        <div className="flex items-center gap-4">
-          <button aria-label="Search" className="hover:text-accent transition-colors hidden md:block"><Search size={20} /></button>
-          <Link href="/orders" aria-label="Orders" className="hover:text-accent transition-colors hidden md:block">
-            <Package size={20} />
+        <div className="flex items-center gap-5">
+          <button aria-label="Search" className="hover:text-accent hidden md:block"><Search size={18} /></button>
+          <Link href="/orders" aria-label="Orders" className="hover:text-accent hidden md:block">
+            <User size={18} />
           </Link>
-          <Link href="/cart" aria-label="Cart" className="relative hover:text-accent transition-colors">
-            <ShoppingCart size={20} />
-            {count > 0 && (
-              <span className="absolute -top-2 -right-2 bg-accent text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-display">
-                {count}
-              </span>
-            )}
+          <span className="hidden md:inline text-ink/30">|</span>
+          <Link href="/cart" aria-label="Cart" className="relative hover:text-accent flex items-center gap-1.5">
+            <ShoppingCart size={18} />
+            <span className="text-xs font-display tracking-wider-3">{count}</span>
           </Link>
-          <button onClick={() => setOpen(!open)} className="md:hidden" aria-label="Menu">
+          <button onClick={() => setOpen(!open)} className="md:hidden text-ink" aria-label="Menu">
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-bg">
-          <nav className="flex flex-col p-4 gap-3 font-display tracking-wider-2 uppercase">
-            <Link href="/" onClick={() => setOpen(false)}>Home</Link>
+        <div className="md:hidden border-t border-border bg-bg/95 backdrop-blur mx-5 mt-2">
+          <nav className="flex flex-col p-5 gap-4 font-display tracking-wider-3 uppercase">
             <Link href="/shop" onClick={() => setOpen(false)}>Shop</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Work Gloves")}`} className="hover:text-accent transition-colors">WORK GLOVES</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Tactical")}`} className="hover:text-accent transition-colors">TACTICAL</Link>
-              <Link href={`/shop?category=${encodeURIComponent("Accessories")}`} className="hover:text-accent transition-colors">ACCESSORIES</Link>
             <Link href="/about" onClick={() => setOpen(false)}>About</Link>
             <Link href="/contact" onClick={() => setOpen(false)}>Contact</Link>
-            <Link href="/orders" onClick={() => setOpen(false)}>Order Lookup</Link>
+            <Link href="/orders" onClick={() => setOpen(false)}>Track Order</Link>
           </nav>
         </div>
       )}

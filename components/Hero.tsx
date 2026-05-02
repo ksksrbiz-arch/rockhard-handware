@@ -1,27 +1,30 @@
 import Link from 'next/link';
+import { Logo } from './Logo';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bg border-b border-border">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/10 via-transparent to-accent-2/10 pointer-events-none" />
-      <div className="absolute inset-0 grain pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-4 py-24 md:py-32 grid md:grid-cols-2 gap-12 items-center">
-        <div>
-          <p className="text-accent font-display tracking-wider-3 uppercase text-sm mb-4">★ TOUGHENED GEAR</p>
-          <h1 className="heading-mega text-6xl md:text-8xl whitespace-pre-line">BUILT FOR\nGLORY.</h1>
-          <p className="mt-6 text-muted max-w-md text-lg">Heavy-duty handware. No fragile sh*t.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/shop" className="btn-primary">SHOP THE LINE</Link>
-            <Link href="/about" className="btn-secondary">OUR STORY</Link>
+    <section className="relative min-h-[92vh] flex items-end overflow-hidden">
+      {/* Background — rusty texture / glove + wrench composition */}
+      <div className="absolute inset-0">
+        <img
+          src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=2000&q=80"
+          alt=""
+          className="w-full h-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/55 to-bg/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-transparent to-bg" />
+        <div className="absolute inset-0 grain pointer-events-none" />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-7xl px-5 pb-20 md:pb-28 w-full">
+        <div className="max-w-2xl">
+          <div className="mb-6 hidden md:block">
+            <Logo size="lg" />
           </div>
-        </div>
-        <div className="aspect-[4/5] bg-card border border-border relative grain rounded-sm overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80"
-            alt="Rockhard Handware flagship piece"
-            className="w-full h-full object-cover opacity-90"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent" />
+          <h1 className="heading-mega text-6xl md:text-8xl text-ink mb-3">BUILT FOR GLORY</h1>
+          <p className="font-display tracking-wider-3 uppercase text-ink/85 text-lg md:text-2xl mb-9">REAL GLOVES FOR REAL WORK.</p>
+          <Link href="/shop" className="btn-primary">SHOP WORK GLOVES →</Link>
         </div>
       </div>
     </section>
