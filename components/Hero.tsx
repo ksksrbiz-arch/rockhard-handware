@@ -4,16 +4,16 @@ import { Logo } from './Logo';
 export function Hero() {
   return (
     <section className="relative min-h-[80vh] md:min-h-[92vh] flex items-end overflow-hidden">
-      {/* Background — rusty texture / glove + wrench composition */}
+      {/* Background — real branded hero: gauntlet + wrench + Rockhard RH metal sign */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=2000&q=80"
+          src="/img/rockhard-hero.jpg"
           alt=""
           className="w-full h-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-bg/95 via-bg/55 to-bg/20" />
-        <div className="absolute inset-0 bg-gradient-to-b from-bg/70 via-transparent to-bg" />
+        <div className="absolute inset-0 bg-gradient-to-r from-bg/90 via-bg/40 to-bg/10" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg/40 via-transparent to-bg" />
         <div className="absolute inset-0 grain pointer-events-none" />
       </div>
 
