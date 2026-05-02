@@ -7,6 +7,8 @@ import { StorySection } from '@/components/StorySection';
 import { FooterStrip } from '@/components/FooterStrip';
 import { Footer } from '@/components/Footer';
 
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   return (
     <>
