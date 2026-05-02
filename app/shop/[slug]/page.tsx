@@ -15,10 +15,21 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const product = await getProduct(params.slug);
   if (!product) return {};
+  // Build an absolute og:image URL so it works regardless of metadataBase resolution.
+  // Relative /img/ paths get prefixed with the deployed origin if available, else the
+  // configured production domain.
+  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://rockhard-handware.netlify.app';
+  const ogImage = product.image_url
+    ? (product.image_url.startsWith('http') ? product.image_url : `${origin}${product.image_url}`)
+    : undefined;
   return {
     title: product.name,
     description: product.tagline,
-    openGraph: { title: product.name, description: product.tagline, images: product.image_url ? [product.image_url] : [] },
+    openGraph: {
+      title: product.name,
+      description: product.tagline,
+      images: ogImage ? [ogImage] : [],
+    },
   };
 }
 
@@ -33,12 +44,19 @@ export default async function ProductPage({ params }: { params: { slug: string }
 
   if (db && product.id) {
     try {
-      variants = await db.sql`
+      const rawVariants = await db.sql`
         SELECT id, name, sku, price, inventory, attributes
         FROM product_variants
         WHERE product_id=${product.id}
         ORDER BY created_at ASC
       `;
+      // Postgres NUMERIC comes back as string — normalize to number so
+      // .toFixed() and arithmetic work everywhere downstream.
+      variants = rawVariants.map((v: any) => ({
+        ...v,
+        price: v.price != null ? Number(v.price) : 0,
+        inventory: v.inventory != null ? Number(v.inventory) : 0,
+      }));
       const ratings = await db.sql`
         SELECT rating FROM reviews WHERE product_id=${product.id} AND status='published'
       `;
@@ -58,12 +76,15 @@ export default async function ProductPage({ params }: { params: { slug: string }
     }
   }
 
+  const origin = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://rockhard-handware.netlify.app';
   const productJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.name,
     description: product.tagline,
-    image: product.image_url,
+    image: product.image_url
+      ? (product.image_url.startsWith('http') ? product.image_url : `${origin}${product.image_url}`)
+      : undefined,
     offers: {
       '@type': 'Offer',
       price: product.price,

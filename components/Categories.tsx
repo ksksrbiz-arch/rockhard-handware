@@ -29,7 +29,7 @@ export function Categories() {
         </div>
         <div className="group">
           <div className="aspect-square bg-white relative overflow-hidden border border-light-ink/10 mb-4">
-            <img src="https://images.unsplash.com/photo-1605651531144-51381895e23d?auto=format&fit=crop&w=800&q=80" alt="COLD WEATHER" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src="/img/glove-leather-pair.jpg" alt="COLD WEATHER" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <p className="font-display tracking-wider-3 uppercase text-light-ink text-base md:text-lg text-center mb-1">COLD WEATHER</p>
           <p className="text-light-ink/70 text-xs text-center mb-4">Stay warm. Keep working.</p>

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://rockhardhandware.com'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://rockhard-handware.netlify.app'),
   title: { default: 'Rockhard Handware — Built for Glory.', template: '%s · Rockhard Handware' },
   description: 'Built for Glory.',
   openGraph: {
