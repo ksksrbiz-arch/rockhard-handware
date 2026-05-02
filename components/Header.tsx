@@ -11,9 +11,15 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="absolute top-10 left-0 right-0 z-30">
-      <div className="mx-auto max-w-7xl px-5 flex items-center justify-between">
-        <Logo size="md" />
+    <header className="absolute top-7 md:top-10 left-0 right-0 z-30">
+      <div className="mx-auto max-w-7xl px-4 md:px-5 flex items-center justify-between">
+        {/* Smaller logo on mobile to avoid hero overlap */}
+        <div className="md:hidden">
+          <Logo size="sm" />
+        </div>
+        <div className="hidden md:block">
+          <Logo size="md" />
+        </div>
 
         <nav className="hidden md:flex items-center gap-8 text-xs font-display tracking-wider-3 uppercase">
           <details className="relative">
@@ -30,7 +36,7 @@ export function Header() {
           <Link href="/about" className="hover:text-accent">Built for Glory</Link>
         </nav>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-4 md:gap-5">
           <button aria-label="Search" className="hover:text-accent hidden md:block"><Search size={18} /></button>
           <Link href="/orders" aria-label="Orders" className="hover:text-accent hidden md:block">
             <User size={18} />
@@ -47,7 +53,7 @@ export function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden border-t border-border bg-bg/95 backdrop-blur mx-5 mt-2">
+        <div className="md:hidden border border-border bg-bg/95 backdrop-blur mx-4 mt-3">
           <nav className="flex flex-col p-5 gap-4 font-display tracking-wider-3 uppercase">
             <Link href="/shop" onClick={() => setOpen(false)}>Shop</Link>
             <Link href="/about" onClick={() => setOpen(false)}>About</Link>
